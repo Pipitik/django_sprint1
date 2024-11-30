@@ -51,11 +51,11 @@ def index(request):
     return render(request, template, context)
 
 
-def post_detail(request, id):
-    post = next((post for post in posts if post['id'] == id), None)
+def post_detail(request, post_id):
+    post = next((post for post in posts if post['id'] == post_id), None)
 
     if post is None:
-        raise Http404(f'Пост с идентификатором {id} не существует')
+        raise Http404(f'Пост с идентификатором {post_id} не существует')
 
     template = 'blog/detail.html'
     context = {'post': post}
